@@ -1,5 +1,5 @@
 # Devon's Programmer Calculator
-![Calculator](Calculator.jpg)
+![Calculator](Calculator.png)
 
 A quick and dirty calculator for programming purposes that I made. Supports:
 * Standard mathematical operations
