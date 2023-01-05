@@ -24,31 +24,31 @@ namespace DevonsProgrammerCalc
 				return;
 			}
 
-			// Get base number to display
-			long msb = 1L << (ResultsSize - 1);
-			long mask = (ResultsUnsigned ? msb : 0) + (msb - 1);
-			long baseNum = Results & mask;
-			bool negative = false;
-			if (!ResultsUnsigned && (Results & msb) != 0)
-			{
-				negative = true;
-				baseNum = -baseNum & mask;
-				if (baseNum == 0)
-					baseNum = msb;
-			}
+            // Get base number to display
+            long msb = 1L << (ResultsSize - 1);
+            long mask = (ResultsUnsigned ? msb : 0) + (msb - 1);
+            long baseNum = Results & mask;
+            bool negative = false;
+            if (!ResultsUnsigned && (Results & msb) != 0)
+            {
+                negative = true;
+                baseNum = -baseNum & mask;
+                if (baseNum == 0)
+                    baseNum = msb;
+            }
 
-			// Convert number to string
-			StringBuilder stringBuilder = new StringBuilder();
-			while (baseNum != 0)
-			{
-				stringBuilder.Insert(0, (baseNum % ResultsNumBase).ToString("X1"));
-				baseNum /= ResultsNumBase;
-			}
-			if (stringBuilder.Length == 0)
-				stringBuilder.Append("0");
+            // Convert number to string
+            StringBuilder stringBuilder = new StringBuilder();
+            while (baseNum != 0)
+            {
+                stringBuilder.Insert(0, ((ulong)baseNum % (ulong)ResultsNumBase).ToString("X1"));
+                baseNum = (long)((ulong)baseNum / (ulong)ResultsNumBase);
+            }
+            if (stringBuilder.Length == 0)
+                stringBuilder.Append("0");
 
-			// Add prefix
-			switch (ResultsNumBase)
+            // Add prefix
+            switch (ResultsNumBase)
             {
 				case 2:
 					// Binary
