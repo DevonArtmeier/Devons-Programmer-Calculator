@@ -205,6 +205,7 @@ namespace DevonsProgrammerCalc
 						return false;
 					}
 					numStr += c;
+					gotNumber = true;
 				}
 			}
 
